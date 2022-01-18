@@ -1,0 +1,50 @@
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;;
+}
+
+body {
+    min-width: 100vh;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+header {
+    border-bottom: 1px black solid;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+h1 {
+    font-size: 45px;
+}
+
+.main-content {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    flex: 1 0 auto;
+    margin: 0 auto;
+}
+.books-container {
+    display: flex;
+    height: fit-content;
+}
+
+
+.button-container {
+    align-self: center;
+    justify-self: center;
+    padding: 20px;
+}
+
+footer {
+    padding: 2rem;
+}
