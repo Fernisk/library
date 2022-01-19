@@ -13,18 +13,48 @@
           <h1>Library</h1>
     </header>
     <section class="main-content">
+        <!-- button for form  -->
         <div class="button-container">
-            <button data-addBook>Add Book+</button>
+            <button id="hover" class="addButton" onclick="openForm()">Add Book+</button>
         </div>
+       <!--popup form  -->
+        <div class="loginPopWrap">
+           <div class="formPopup">
+             <form class="formContainer">
+             <h2>Add New Book</h2>
+             <label for="title">
+                 <strong>Title</strong>
+             </label>
+             <input type="text" name="title" placeholder="Title" required>
+             <label for="author">
+                 <strong>Author</strong>
+             </label>
+             <input type="text" name="author" placeholder="Author" required>
+             <label for="pages">
+                 <strong>Pages</strong>
+             </label>
+             <input type="number" name="pages" placeholder="Num. of pages" min="0" required>
+             <label for="checkRead">
+                 <strong>Have you read it?</strong>
+             </label>
+             <input class="checkNumber" type="checkbox" name="readIt" value="read">
+             <button type="submit" class="btn" onclick="closeForm()">Submit</button>
+           </div>
+         </form>
+        </div>
+
+<!-- content -->
     <div class="books-container">
        <div class="card-container">
            <ul class="library-card" data-card>
                <li data-name>The Lord of The Rings</li>
                <li data-author>J.R.R. Tolkien</li>
                <li data-pages>1216 pages</li>
-               <li data-read>read</li>
+               <button id="hover" class="notRead" data-toggle>Not Read</button>
+               <button id="hover" class="remove" data-remove>Remove</button>
            </ul>
        </div> 
+
     </div>
     </section>
     <footer>Made By Fernando Miyares</footer>

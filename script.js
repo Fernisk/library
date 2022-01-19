@@ -13,6 +13,9 @@ function Book (title, author, pages, readOrNot) {
     }
 
 }
+function openTheForm() {
+  document.querySelector(".popupForm").style.display = "block";
+}
 
 function addBookToLibrary() {
 

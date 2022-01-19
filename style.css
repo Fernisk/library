@@ -1,5 +1,7 @@
 *, *::before, *::after {
     box-sizing: border-box;
+    font-weight: normal;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
 * {
@@ -13,6 +15,7 @@ body {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
+    background-color: rgba(255, 255, 255, 0.50);
 }
 
 header {
@@ -21,6 +24,7 @@ header {
     display: flex;
     justify-content: center;
     align-content: center;
+    background-color: rgba(72, 101, 180, 0.40);
 }
 h1 {
     font-size: 45px;
@@ -35,14 +39,111 @@ h1 {
 }
 .books-container {
     display: flex;
-    height: fit-content;
+    flex: auto;
+    flex-wrap: wrap;
+    padding: 20px;
+    align-content: flex-start;
+    justify-content: space-between;
 }
+
+.card-container {
+    width: 180px;
+    margin: 5px;
+    height: 200px;
+    border: 2px rgba(0, 0, 0, 1)  solid;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+.library-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1em;
+}
+
+.library-card > button {
+    padding: 5px;
+    width: 100%;
+    cursor: pointer;
+    border: 1px rgba(0, 0, 0, 0.50) solid;
+    border-radius: 5px;
+    font-weight: 600;
+}
+
 
 
 .button-container {
     align-self: center;
     justify-self: center;
     padding: 20px;
+}
+.addButton{
+    border-radius: 5px;
+    border: rgba(0, 0, 0, 0.50) 1px solid;
+    padding: 15px;
+    font-size: 15px;
+    background-color: rgba(0, 255, 21, 0.5);
+    font-weight: 600;
+}
+/* styles for button */
+.read {
+    background-color: rgba(0, 255, 21, 0.5);
+}
+.notRead {
+    background-color: rgba(255, 0, 21, 0.20);
+}
+
+.remove {
+    background-color: red;
+}
+#hover:hover {
+    transform: scale(1.05);
+}
+
+/* form styling */
+.loginPopWrap {
+  position: relative;  
+  width: 100%;
+  text-align: center;
+}
+.formPopup {
+    /* display: none; */
+    position: fixed;
+    left: 50%;
+    top: 20%;
+    transform:translate(-50%,5%);
+    border: 3px solid rgba(0, 0, 0, 0.50);
+}
+.formContainer input[type=text]:focus,
+.formcontainer input[type=number]:focus {
+    background-color: #ddd;
+    outline: none;
+}
+.formContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1em;
+    padding: 10px 30px;
+}
+.checkNumber {
+    align-self: center;
+}
+.formContainer .btn {
+    padding: 12px 20px;
+    border: none;
+    background-color: rgba(0, 255, 21, 0.5);
+    color: black;
+    font-weight: 600;
+    cursor: pointer;
+    width: 100%;
+    margin-bottom: 15px;
+    opacity: 0.8;
+}
+.formContainer .btn:hover {
+    opacity: 1;
 }
 
 footer {
