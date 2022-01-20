@@ -15,30 +15,30 @@
     <section class="main-content">
         <!-- button for form  -->
         <div class="button-container">
-            <button id="hover" class="addButton" onclick="openForm()">Add Book+</button>
+            <button id="hover" class="addButton">Add Book+</button>
         </div>
        <!--popup form  -->
         <div class="loginPopWrap">
-           <div class="formPopup">
-             <form class="formContainer">
+           <div class="formPopup" id="popupForm">
+             <form class="formContainer" id="containerForm">
              <h2>Add New Book</h2>
              <label for="title">
                  <strong>Title</strong>
              </label>
-             <input type="text" name="title" placeholder="Title" required>
+             <input type="text" name="title" id="title" placeholder="Title" required>
              <label for="author">
                  <strong>Author</strong>
              </label>
-             <input type="text" name="author" placeholder="Author" required>
+             <input type="text" name="author" id="author" placeholder="Author" required>
              <label for="pages">
                  <strong>Pages</strong>
              </label>
-             <input type="number" name="pages" placeholder="Num. of pages" min="0" required>
+             <input type="number" name="pages" id="pages" placeholder="Num. of pages" min="0" required>
              <label for="checkRead">
                  <strong>Have you read it?</strong>
              </label>
-             <input class="checkNumber" type="checkbox" name="readIt" value="read">
-             <button type="submit" class="btn" onclick="closeForm()">Submit</button>
+             <input class="checkNumber" type="checkbox" name="readIt" id="checkRead" value="read">
+             <button type="submit" class="btn">Submit</button>
            </div>
          </form>
         </div>
