@@ -2,9 +2,14 @@
 const body = document.querySelector("body");
 const booksContainer = document.querySelector(".books-container");
 const addButton = document.querySelector(".addButton");
-const submitButton = document.querySelector(".btn");
 const form = document.querySelector("#containerForm");
 const popupForm = document.querySelector(".formPopup");
+
+//get all the cards
+//get the last one
+const allNodes = document.querySelectorAll(".card-container");
+const lastAddedNode = allNodes[allNodes.length - 1];
+
 //array of objects container 
 let myLibrary = [];
 
@@ -13,19 +18,70 @@ function Book (title, author, pages, readOrNot) {
     this.title = title,
     this.author = author,
     this.pages = pages,
-    this.readOrNot = readOrNot 
+    this.readOrNot = readOrNot,
     this.info = () => {
         return `${this.title} by ${this.author}, ${pages}, ${readOrNot}`
     }
-
 }
 
-function addBookToLibrary() {
+
+function addBookToLibrary(titleAdd, authorAdd, pagesAdd, readCheckAdd) {
+        
+    //create a new Book object
+    const newBookAdded = new Book (titleAdd, authorAdd, pagesAdd, readCheckAdd);
+
+    //push it to the array
+    myLibrary.push(newBookAdded);
+    console.log(newBookAdded.info())
+    console.log(myLibrary)
+   
+    //get last book added
+    let lastBookAdded = myLibrary[myLibrary.length - 1];
+
+
+    let cardContainerDiv = document.createElement("div");
+    let libraryCardUl = document.createElement("ul");
+    let titleLi = document.createElement("li");
+    let authorLi= document.createElement("li");
+    let pagesLi = document.createElement("li");
+    let readButton = document.createElement("button");
+    let removeButton = document.createElement("button");
+    
+    //append them
+    booksContainer.appendChild(cardContainerDiv);
+    cardContainerDiv.appendChild(libraryCardUl);
+    libraryCardUl.appendChild(titleLi);
+    libraryCardUl.appendChild(authorLi);
+    libraryCardUl.appendChild(pagesLi);
+    libraryCardUl.appendChild(readButton);
+    libraryCardUl.appendChild(removeButton);
+    
+    //set attributes
+    cardContainerDiv.setAttribute("class", "card-container");
+    libraryCardUl.setAttribute("class", "library-card");
+    titleLi.setAttribute("data-title", "title") 
+    authorLi.setAttribute("data-author", "author");
+    pagesLi.setAttribute("data-pages", "pages"); 
+    readButton.setAttribute("class", "notRead");
+    readButton.setAttribute("id", "hover");
+    removeButton.setAttribute("class", "remove");
+    removeButton.setAttribute("id", "hover");
+
+    //query for the values
+    const addedTitle = lastAddedNode.querySelector("li[data-title=title]");
+    const addedAuthor = lastAddedNode.querySelector("li[data-author=author]");
+    const addedPages = lastAddedNode.querySelector("li[data-pages=pages]");
+    const addedToggleButton= lastAddedNode.querySelector(".notRead");
+    const addedRemoveButton = lastAddedNode.querySelector("remove");
+    console.log(addedTitle)
+    //set the values from the myLibrary array to ui 
 
 }
 
 //will set ids for us
 let id = (id) => document.getElementById(id);
+
+
 
 //sets values with their key on the form
 let title = id("title"),
@@ -39,16 +95,39 @@ function openForm() {
    popupForm.style.display = "block";
 }
 
-
-const submitForm = () => {
-    form.addEventListener("submit", (e) => {
+const submitForm = (e) => {
+        //dont't run until all requirements met
         e.preventDefault();
-        form.reset()
+
+
+        //set the values
+        let titleTemp = form.title.value;
+        let authorTemp = form.author.value;
+        let pagesTemp = form.pages.value;
+        let readCheck;
+        if (form.checkRead.checked){
+            readCheck = true
+        } else {
+            readCheck = false;
+        }
+
+        //add Book to object
+        addBookToLibrary(titleTemp,authorTemp,pagesTemp,readCheck);
+
+        //close form
          popupForm.style.display = "none";
          booksContainer.style.opacity = "1";
-        console.log(form.elements.title.value);
-    })
+
+        //clear values
+        titleTemp = "";
+        authorTemp = "";
+        pagesTemp = "";
+        readCheck = false;
+        
+        //reset form input values
+        form.reset()
 }
+
 
 function deleteBook() {
 
@@ -57,11 +136,8 @@ function deleteBook() {
 //opens the form
 addButton.addEventListener("click", openForm);
 //closes the form / will also return all the values
-submitButton.addEventListener("click", submitForm);
+form.addEventListener("submit", submitForm);
 
 
 
 
-
-const theHobbit = new Book ("The Hobbit", "J.R.R. Tolkien", "295 pages", "not read yet");
-console.log(theHobbit.info())

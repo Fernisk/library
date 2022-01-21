@@ -43,7 +43,7 @@ h1 {
     flex-wrap: wrap;
     padding: 20px;
     align-content: flex-start;
-    justify-content: space-between;
+    justify-content: flex-start;
 }
 
 .card-container {
@@ -113,7 +113,9 @@ h1 {
     position: fixed;
     left: 50%;
     top: 20%;
+    color: black;
     transform:translate(-50%,5%);
+    background-color: rgba(45, 79, 173, 0.95);
     border: 3px solid rgba(0, 0, 0, 0.75);
     border-radius: 20px;
     z-index: 9;
