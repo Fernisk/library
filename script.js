@@ -32,13 +32,27 @@ function addBookToLibrary(titleAdd, authorAdd, pagesAdd, readCheckAdd) {
 
     //push it to the array
     myLibrary.push(newBookAdded);
+
     console.log(newBookAdded.info())
     console.log(myLibrary)
    
-    //get last book added
-    let lastBookAdded = myLibrary[myLibrary.length - 1];
+    //query through array
+    //forEach item in the array, it should output the object to the ui
+
+    myLibrary.forEach((obj, index) => {
+            //output the title
+            console.log(this)
+            //author
+            //pages
+            //if it's checked or not
+            //the toggle button
+            //the remove button       
+
+    });
 
 
+
+    
     let cardContainerDiv = document.createElement("div");
     let libraryCardUl = document.createElement("ul");
     let titleLi = document.createElement("li");
@@ -95,16 +109,22 @@ function openForm() {
    popupForm.style.display = "block";
 }
 
+//global variables for every iteration of the form submit
+let titleTemp;
+let authorTemp;
+let pagesTemp;
+let readCheck;
+
 const submitForm = (e) => {
         //dont't run until all requirements met
         e.preventDefault();
 
 
         //set the values
-        let titleTemp = form.title.value;
-        let authorTemp = form.author.value;
-        let pagesTemp = form.pages.value;
-        let readCheck;
+        titleTemp = form.title.value;
+        authorTemp = form.author.value;
+        pagesTemp = form.pages.value;
+        readCheck;
         if (form.checkRead.checked){
             readCheck = true
         } else {
